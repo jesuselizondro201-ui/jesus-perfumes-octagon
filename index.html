@@ -129,8 +129,8 @@ a.appendChild(pic);a.appendChild(h);a.appendChild(info);grid.appendChild(a);
 if(io)io.observe(a);else a.classList.add("in")})}
 function upd(bump){
 var ids=Object.keys(cart).filter(function(k){return cart[k]>0&&D[k]}),n=0,T=0,box=$("items");box.innerHTML="";
-var msg="Hola, quiero hacer este pedido:\n";
-ids.forEach(function(k){var x=D[k],c=cart[k];n+=c;T+=c*x.p;msg+="• "+c+" x "+x.n+" ("+x.b+", "+x.s+") – $"+c*x.p+"\n";
+var msg="✨ *Pedido · Octagon Digital Studio* ✨\n\nHola 👋 Me gustaría pedir estos perfumes del catálogo:\n\n";
+ids.forEach(function(k){var x=D[k],c=cart[k];n+=c;T+=c*x.p;msg+="🌸 *"+x.n+"*\n"+x.b+" · "+x.s+" · "+c+" × $"+x.p+" = $"+c*x.p+"\n\n";
 var r=document.createElement("div");r.className="it";
 r.innerHTML='<img alt=""><div class="t"><b></b><span></span></div><div class="q"><button>−</button><span></span><button>+</button></div>';
 if(x.i)r.querySelector("img").src=x.i;else r.querySelector("img").style.visibility="hidden";
@@ -139,7 +139,7 @@ var bs=r.querySelectorAll("button");r.querySelector(".q span").textContent=c;
 bs[0].onclick=function(){cart[k]--;if(cart[k]<1)delete cart[k];sv("oct_cart",cart);upd()};
 bs[1].onclick=function(){cart[k]++;sv("oct_cart",cart);upd()};box.appendChild(r)});
 if(!ids.length)box.innerHTML='<p style="color:var(--muted);text-align:center;padding:40px 0">Tu pedido está vacío.<br>Agrega perfumes con el botón rosado.</p>';
-$("tot").textContent="$"+T;$("send").href=WA+encodeURIComponent(msg+"Total: $"+T);
+$("tot").textContent="$"+T;$("send").href=WA+encodeURIComponent(msg+"━━━━━━━━━━\n💰 *Total: $"+T+"*\n\n¿Me confirmas disponibilidad y la forma de entrega? 🌸 ¡Gracias!");
 $("send").style.display=n?"block":"none";
 var f=$("fab");f.textContent="🛍 Mi pedido"+(n?" ("+n+") · $"+T:"");
 if(bump){f.classList.remove("bump");void f.offsetWidth;f.classList.add("bump")}}
